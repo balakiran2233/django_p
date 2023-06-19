@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% include 'cdnlines.html' %}
+  </head>
+  <style>
+    body{background-image: linear-gradient(90deg,blue,DodgerBlue,MediumSeaGreen,Gray,SlateBlue,Violet);}
+    h2:hover{animation: rotate 5s linear infinite;}
+    @keyframes rotate{from{transform: rotate(0deg);}to{transform: rotate(360deg);}}
+</style>
+  </style>
+  <body>
+    {% include 'navbar.html' %}
+    <h2 class="text-center mt-5 mb-5 text-dark"> <b><u>NTH Articles</u></b> </h2>
+    {% block content %}
+    
+    {% endblock %}
+  </body>
+</html>

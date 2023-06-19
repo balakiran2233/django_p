@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% include 'cdnlines.html'  %}
+  </head>
+  <style>
+    form{border: 5px groove white;padding:30px; border-radius: 15%;}
+    .jumbotron{border-radius:10%;background-image:
+      linear-gradient(45deg,silver,black,purple);}
+    body{background-image:url('static/images/b.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: 100% 100%;}
+  </style>
+  <body>
+    {% block content %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-8">
+      <img src="{% static 'images/login.jpg' %}" style="width:100%; height:100%; border-radius: 20%;" class="img-thumbnail">
+    </div>
+    <div class="col-md-4">
+      <form method="POST">
+        <div class="jumbotron">
+        <h1 class="mb-2 text-light"><u> Login Here </u></h1>
+        <b><label class="text-light">Username & Password</label></b>
+        {% csrf_token %}
+        {{ form.as_p }} 
+        <center>
+        <input type="submit" value="Login" class="btn btn-success mr-3">
+        <input type="reset" value="Clear" class="btn btn-danger"><br>
+        <a href="{% url 'signup' %}" class="btn btn-primary mt-2">Signup</a> 
+        </div>
+      </form>
+    </div>                                     
+  </div>
+</div>
+{% endblock %}
+    
+  </body>
+</html>

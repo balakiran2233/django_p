@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% include 'cdnlines.html' %}
+  </head>
+  <style>
+      table, th, td {border: 5px dotted black;}
+      body{background-image:linear-gradient(90deg,#ed9b9b,#9b9bef,#f9f999,#85f385,#ffc0cb);}
+  </style>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="offset-md-1 col-md-5 mt-5">
+        <center>
+            <form method="POST">
+                {% csrf_token %}
+                <textarea type="text" name='com' placeholder="comment.." ></textarea>
+                <input type="submit" class="btn btn-danger">
+              </form>
+          
+        </center>
+        
+  
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    {% include 'cdnlines.html' %}
+  </head>
+  <body>
+    {% block content %}
+    <div class="container-fluid">
+      <div class="row">
+        {% for i in posts %}
+          <div class="col-md-6" >
+            <div class="jumbotron" style="background-image: linear-gradient(45deg,skyblue,lightpink);">
+              <b>Article Title:</b> <a href="{% url 'post_detail' i.id i.slug %}">{{ i.title }}</a>
+              <small style="float:right">{{ i.created_date }}</small><br>
+              <b>Author:</b>  {{ i.author }} <br>
+              <b>Article Content: </b> {{ i.body }} <br>
+            </div>
+          </div>
+        {% empty %}
+          <div class="container m-5">
+            <div class="jumbotron m-5">
+              <h1 class="text-center">No Articles Availble</h1>
+            </div> 
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <br>
+    <div class="offset-md-5 col-md-5">
+    <ul class="pagination">
+      {% if posts.has_previous %}
+          <li class="page-item ">
+              <a class="page-link" href="?page={{ posts.previous_page_number }}">&laquo</a>
+          </li>
+      {% endif %}
+      {% for p in posts.paginator.page_range %}
+        {% if posts.number == p %}
+            <li class="page-item active">
+                <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+            </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+        </li>
+        {% endif %}
+      {% endfor %}
+      {% if posts.has_next %}
+          <li class="page-item">
+              <a class="page-link" href="?page={{ posts.next_page_number }}">&raquo</a>
+          </li>
+      {% endif %}
+    </ul>
+  </div>
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=h1, initial-scale=1.0">
+        {% include 'cdnlines.html' %}
+    </head>
+    <style>
+    body{background-image:url('static/images/lm2.jpeg');background-repeat: no-repeat;background-attachment: fixed;background-size: 100% 100%;}
+    .one{background-image: linear-gradient(90deg,DodgerBlue,MediumSeaGreen,Violet);} 
+    .two{background-image: linear-gradient(45deg,Violet,MediumSeaGreen,DodgerBlue);}    
+    .three{background-image: linear-gradient(90deg,Violet,MediumSeaGreen,DodgerBlue);}
+    .four{background-image: linear-gradient(45deg,DodgerBlue,MediumSeaGreen,Violet);} 
+    </style>
+    <body>
+        <nav class="navbar navbar-light" 
+        style="background-image:linear-gradient(45deg,rgb(218, 186, 128),rgb(231, 161, 173),rgb(142, 142, 241))">
+            <a class="navbar-brand" href="{% url 'post_list' %}" style="font-size :20px;font-weight: bolder; ">Home</a>
+            <form class="form-inline" method="POST">
+                {% csrf_token %}
+                <a class="btn mr-5" style="font-size :20px;font-weight: bolder; ">Hello, {{user.username}}</a>
+                <a class="btn btn-dark" style="font-weight: bolder;" href="{% url 'user_logout' %}">Logout</a>
+            </form>
+        </nav>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-5 mt-5 one">
+                    <div class="jumbotron m-5 two">
+                        <center><a href="{% url 'post_create' %}" class="btn btn-dark">Add Article</a></center>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+
+
+                </div>
+
+
+                <div class="col-md-5 mt-5 three">
+                    <div class="jumbotron m-5 four">
+                        <center><a href="#" class="btn btn-dark">Show Article</a></center>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+</html>

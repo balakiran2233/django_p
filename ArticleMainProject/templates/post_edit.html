@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    {% include 'cdnlines.html' %}
+  </head>
+  <style>
+    form{border:10px groove black;border-radius:5%; padding: 10px;}
+    body{background-image:url('static/images/update1.jpeg');
+    background-repeat: no-repeat;background-attachment: fixed;background-size: 100% 100%;}
+  </style>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="offset-md-4 col-md-4">
+          {% block content %}
+          <form method="POST">
+            <h1 class="text-center"><u><b> Update Article </b></u></h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <center>
+            <input type="submit"  value="Update" class="btn btn-success mr-4"> 
+            <input type="reset" value="Cancle" class="btn btn-danger"> <br>
+            <a href="{% url 'post_list' %}" class="btn btn-primary mt-3">GO To Back</a>
+          </center>
+          </form>
+          {% endblock %}
+           
+        </div>
+      </div>
+    </div>
+    
+    
+  </body>
+</html>

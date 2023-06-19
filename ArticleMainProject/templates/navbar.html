@@ -1,0 +1,28 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-image:linear-gradient(45deg,red,white,green)">
+  <img src="{% static 'images/logo.png' %}" style="width:4%; height:4%; border-radius:50%;" class="img-thumbnail mr-2">
+  <a class="navbar-brand" href="#">NTH</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <ul class="navbar-nav">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <a href="{% url 'loginhome' %}" class="btn mr-5" style="font-size:25px;">  Hello Welcome To , {{ request.user|capfirst }} </a>
+
+       <!-- <a class="nav-item active btn btn-danger mr-5" href="{% url 'user_logout' %}">Logout</a>
+        <a class="nav-item active btn btn-primary mr-5" href="{% url 'post_create' %}">Create Post</a> -->
+
+      </li>
+      {% else %}
+      <li class="nav-item">
+          <a class="btn btn-light mr-5" href="{% url 'user_login' %}">Login</a>
+          <a class="btn btn-light mr-5" href="{% url 'signup' %}">Signup</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
